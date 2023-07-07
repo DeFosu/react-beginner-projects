@@ -19,7 +19,7 @@ function App() {
 
   React.useEffect(() => {
     setIsLoading(true);
-    const category = categoryId != 0 ? `category=${categoryId}` : '' ;
+    const category = categoryId !== 0 ? `category=${categoryId}` : '' ;
     const pageIndex = `page=${page}`;
 
     fetch(`https://649fcbaded3c41bdd7a6b256.mockapi.io/gallary?${pageIndex}&limit=3&${category}`)
@@ -40,7 +40,7 @@ function App() {
         <ul className="tags">
           {
             cats.map(
-              (obj, index) => <li onClick={() => setCategoryId(index)} key={obj.name} className={categoryId == index ? 'active' : ''}>{obj.name}</li>
+              (obj, index) => <li onClick={() => setCategoryId(index)} key={obj.name} className={categoryId === index ? 'active' : ''}>{obj.name}</li>
             )
           }
         </ul>
@@ -61,7 +61,7 @@ function App() {
       </div>
       <ul className="pagination">
         {
-          [...Array(3)].map((_, index) => <li className={page == index + 1 ? 'active' : ''} onClick={() => setPage(index+1)} >{index+1}</li>)
+          [...Array(3)].map((_, index) => <li className={page === index + 1 ? 'active' : ''} onClick={() => setPage(index+1)} >{index+1}</li>)
         }
       </ul>
     </div>
